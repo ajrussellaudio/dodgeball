@@ -10,9 +10,9 @@
 # - Read match result
 # - Update match (with score?)
 # - Delete match (not really necessary, match declared void?)
-# - Return all matches
+# - Return all matches √
 # - Return both teams who played in a match (hash of :home and :away ?)
-# - Delete all matches (convenience)
+# - Delete all matches (convenience) √
 
 require_relative "../db/sql_runner"
 
@@ -54,6 +54,12 @@ class Match
       ) RETURNING * ;"
     match = SqlRunner.run( sql ).first
     @id = match["id"]
+  end
+
+  def home_team()
+    sql = "SELECT * FROM teams WHERE id = {@home_team_id};"
+    home_team = SqlRunner.run( sql ).first
+    return home_team
   end
 
 end
