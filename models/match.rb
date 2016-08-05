@@ -12,3 +12,4 @@
 # - Delete match (not really necessary, match declared void?)
 # - Return all matches
 # - Return both teams who played in a match (hash of :home and :away ?)
+# - Delete all matches (convenience)
