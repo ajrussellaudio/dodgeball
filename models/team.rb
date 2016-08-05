@@ -3,18 +3,13 @@
 # - name √
 # ^ minimum
 
-# For league to work:
-# - points (? league should figure this out)
-# - Wins, Losses, Draws √
-# - Goals for, against
-
 # Should be able to:
 # - Create new team in db √
 # - Read team info/stats √
 # - Update team info √
 # - Delete team from db
-# - Show all teams
-# - Delete all teams (convenience)
+# - Show all teams √
+# - Delete all teams (convenience) √
 # - 
 
 require_relative "../db/sql_runner"
@@ -38,9 +33,6 @@ class Team
   def initialize( options )
     @id = options["id"].to_i
     @name = options["name"]
-    @wins = 0
-    @losses = 0
-    @draws = 0
   end
 
   def save()
@@ -52,9 +44,6 @@ class Team
   def update()
     sql = "UPDATE teams SET
       name = '#{@name}',
-      wins = #{@wins},
-      losses = #{@losses},
-      draws = #{@draws}
       WHERE id = #{@id}
       RETURNING * ;"
     SqlRunner.run( sql )

@@ -3,10 +3,7 @@ DROP TABLE teams;
 
 CREATE TABLE teams (
   id SERIAL4 PRIMARY KEY,
-  name VARCHAR(255),
-  wins INT4,
-  losses INT4,
-  draws INT4
+  name VARCHAR(255)
 );
 
 CREATE TABLE matches (
