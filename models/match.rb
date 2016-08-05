@@ -27,6 +27,11 @@ class Match
     return matches.map { |match_info| Match.new(match_info) }
   end
 
+  def self.delete_all
+    sql = "DELETE FROM matches;"
+    SqlRunner.run( sql )
+  end
+
   def initialize( options )
     @id              = options["id"].to_i
     @home_team_id    = options["home_team_id"].to_i
