@@ -8,3 +8,15 @@
 # - Create array of games for week 
 # - Create array of weeks (fixtures for season) ( ^ permutations of teams)
 # - Create matches (play fixtures)
+
+require_relative "./models/team"
+require "pry-byebug"
+
+team1 = Team.new({
+  "name" => "Glasgow Jakeys"
+  })
+
+team1.save()
+
+binding.pry
+nil

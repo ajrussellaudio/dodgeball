@@ -21,13 +21,16 @@ require_relative "../db/sql_runner"
 
 class Team
 
+  attr_accessor :name
+  attr_reader :id
+
   def initialize( options )
     @id = options["id"].to_i
     @name = options["name"]
   end
 
   def save()
-    sql = ""
+    sql = "INSERT INTO teams (name) VALUES ('#{@name}') RETURNING * ;"
     team = SqlRunner.run( sql ).first
     @id = team['id']
   end
