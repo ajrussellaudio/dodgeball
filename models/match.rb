@@ -53,7 +53,8 @@ class Match
       #{@away_team_score}
       ) RETURNING * ;"
     match = SqlRunner.run( sql ).first
-    @id = match["id"]
+    @id = match["id"].to_i
+    return self
   end
 
   def update()

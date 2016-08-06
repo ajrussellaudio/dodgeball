@@ -38,7 +38,8 @@ class Team
   def save()
     sql = "INSERT INTO teams (name) VALUES ('#{@name}') RETURNING * ;"
     team = SqlRunner.run( sql ).first
-    @id = team['id']
+    @id = team['id'].to_i
+    return self
   end
 
   def update()
