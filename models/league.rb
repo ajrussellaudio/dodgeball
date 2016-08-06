@@ -1,20 +1,21 @@
 # Should have:
-# - Array of team objects, sorted by points
-# - array of matches, sorted by id (history)
+# - Access to set of teams
+# - Access to matches
 
 # Should be able to:
-# - Create array of games for week 
-# - Create array of weeks (fixtures for season) ( ^ permutations of teams)
-# - Create matches (play fixtures)
 
 require_relative "./match"
+require_relative "./team"
 
 class League
 
   attr_reader :teams
 
   def initialize( options )
+    Match.delete_all()
+    Team.delete_all()
     @teams = options[:teams]
+    @teams.each { |team| team.save() }
   end
 
 end
