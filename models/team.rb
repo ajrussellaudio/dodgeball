@@ -50,4 +50,9 @@ class Team
     return self
   end
 
+  def delete()
+    sql = "DELETE FROM teams WHERE id = #{@id};"
+    SqlRunner.run( sql )
+  end
+
 end

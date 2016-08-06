@@ -5,7 +5,7 @@ require "pry-byebug"
 Team.delete_all
 
 team1 = Team.new({
-  "name" => "Glasgow Jakeys"
+  "name" => "Glasgow Bigots"
   })
 team2 = Team.new({
   "name" => "Edinburgh Tourists"
