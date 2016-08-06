@@ -19,8 +19,8 @@ match_new = Match.new({
   "away_team_id" => team2.id,
   })
 match_played = Match.new({
-  "home_team_id" => team1.id,
-  "away_team_id" => team2.id,
+  "home_team_id"    => team1.id,
+  "away_team_id"    => team2.id,
   "home_team_score" => 14,
   "away_team_score" => 9,
   })
