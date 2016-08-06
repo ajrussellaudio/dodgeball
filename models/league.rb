@@ -1,10 +1,10 @@
 # Should have:
-# - Access to set of teams
-# - Access to matches
+# - Access to set of teams √
+# - Access to matches √
 
 # Should be able to:
-# - Figure out a team's WLD from matches
-# - Figure out points, based on WLD
+# - Figure out a team's WLD from matches √
+# - Figure out points, based on WLD √
 
 require_relative "./match"
 require_relative "./team"

@@ -1,7 +1,6 @@
 require "minitest/autorun"
 require "minitest/rg"
-require_relative "../league"
-require_relative "../team"
+require_relative "../models/league"
 
 class TestLeague < MiniTest::Test
 
