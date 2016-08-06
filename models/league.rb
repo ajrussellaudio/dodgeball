@@ -24,31 +24,41 @@ class League
   end
 
   def wins(team)
-    home_wins(team) + away_wins(team)
+    wins = @matches.select do |match|
+      (
+        match.home_team_id == team.id && match.home_team_score > match.away_team_score
+      ) || (
+        match.away_team_id == team.id && match.away_team_score > match.home_team_score
+      )
+    end
+    return wins.count
   end
 
-  private
-
-  def home_wins(team)
-    wins = 0
-    matches = @matches.find_all do |match|
-      match.home_team_id == team.id
+  def draws(team)
+    draws = @matches.select do |match|
+      (
+        match.home_team_id == team.id || match.away_team_id == team.id
+      ) && match.home_team_score == match.away_team_score
     end
-    matches.each do |match|
-      wins += 1 if match.home_team_score > match.away_team_score
-    end
-    return wins
+    return draws.count
   end
 
-  def away_wins(team)
-    wins = 0
-    matches = @matches.select do |match|
-      match.away_team_id == team.id
+  def losses(team)
+    losses = @matches.select do |match|
+      (
+        match.home_team_id == team.id && match.home_team_score < match.away_team_score
+      ) || (
+        match.away_team_id == team.id && match.away_team_score < match.home_team_score
+      )
     end
-    matches.each do |match|
-      wins += 1 if match.away_team_score > match.home_team_score
-    end
-    return wins
+    return losses.count
+  end
+
+  def points(team)
+    win_points  = 3
+    draw_points = 1
+    loss_points = 0
+    return (wins(team) * win_points) + (draws(team) * draw_points) + (losses(team) * loss_points)
   end
 
 end

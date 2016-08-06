@@ -49,4 +49,17 @@ class TestLeague < MiniTest::Test
     assert_equal(1, @test_league.wins(@team_gla))
   end
 
+  def test_can_find_team_draws
+    assert_equal(1, @test_league.draws(@team_gla))
+  end
+
+  def test_can_find_team_losses
+    assert_equal(1, @test_league.losses(@team_edn))
+  end
+
+  def test_can_find_team_points
+    assert_equal(4, @test_league.points(@team_gla))
+    assert_equal(1, @test_league.points(@team_edn))
+  end
+
 end
