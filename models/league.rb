@@ -17,16 +17,5 @@ class League
     @teams = options[:teams]
   end
 
-  def matches()
-    matches = @teams.permutation(2)
-    @matches = matches.map do |match| 
-      Match.new({
-        "home_team_id" => match.first,
-        "away_team_id" => match.last 
-      })
-    end
-    return @matches
-  end
-
 end
 
