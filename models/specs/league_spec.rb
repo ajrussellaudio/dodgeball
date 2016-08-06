@@ -12,13 +12,17 @@ class TestLeague < MiniTest::Test
     team2 = Team.new({
       "name" => "Edinburgh Tourists"
       })
-    @test_league = League.new({
-      teams: [team1, team2],
+    @league_of_2 = League.new({
+      teams: [team1.save(), team2.save()],
       })
   end
 
   def test_teams_in_league
-    assert_equal(2, @test_league.teams.count)
+    assert_equal(2, @league_of_2.teams.count)
+  end
+
+  def test_matches
+    assert_equal(2, @league_of_2.matches.count)
   end
 
 end
