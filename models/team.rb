@@ -7,7 +7,7 @@
 # - Create new team in db √
 # - Read team info/stats √
 # - Update team info √
-# - Delete team from db
+# - Delete team from db √
 # - Show all teams √
 # - Delete all teams (convenience) √
 # - 
