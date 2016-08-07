@@ -13,14 +13,20 @@ class League
 
   attr_reader :teams, :matches
 
-  def initialize(teams, matches)
-    @teams = teams
-    @matches = matches
+  def initialize(options)
+    teams = options["teams"]
+    @teams = teams.map! {|team| team.save}
+    @matches = options["matches"]
   end
 
   def team_names
     names = @teams.map {|team| team.name}
     return names.sort
+  end
+
+  def play_game(match)
+    match = match.save()
+    @matches = Match.all
   end
 
   def all_matches(team)
@@ -88,7 +94,6 @@ class League
     away_matches(team).each { |match| goals += match.home_team_score }
     return goals
   end
-
 
 end
 

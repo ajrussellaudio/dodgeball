@@ -29,7 +29,10 @@ class TestLeague < MiniTest::Test
       })
     @match1 = match1.save()
     @match2 = match2.save()
-    @test_league = League.new(Team.all, Match.all)
+    @test_league = League.new({
+      "teams" => Team.all,
+      "matches" => Match.all
+    })
   end
 
   def test_teams_in_league
@@ -67,6 +70,17 @@ class TestLeague < MiniTest::Test
 
   def test_can_find_goals_conceded
     assert_equal(9 + 12, @test_league.goals_against(@team_gla))
+  end
+
+  def test_can_play_match
+    match3 = Match.new({
+      "home_team_id" => @test_league.teams.first.id,
+      "away_team_id" => @test_league.teams.last.id,
+      "home_team_score" => 13,
+      "away_team_score" => 8
+      })
+    @test_league.play_game(match3)
+    assert_equal(3, @test_league.matches.count)
   end
 
 end
