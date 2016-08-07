@@ -61,4 +61,8 @@ class TestLeague < MiniTest::Test
     assert_equal(1, @test_league.points(@team_edn))
   end
 
+  def test_can_find_goals_scored
+    assert_equal(14+12, @test_league.goals_for(@team_gla))
+  end
+
 end
