@@ -62,7 +62,11 @@ class TestLeague < MiniTest::Test
   end
 
   def test_can_find_goals_scored
-    assert_equal(14+12, @test_league.goals_for(@team_gla))
+    assert_equal(14 + 12, @test_league.goals_for(@team_gla))
+  end
+
+  def test_can_find_goals_conceded
+    assert_equal(9 + 12, @test_league.goals_against(@team_gla))
   end
 
 end

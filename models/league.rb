@@ -82,6 +82,13 @@ class League
     return goals
   end
 
+  def goals_against(team)
+    goals = 0
+    home_matches(team).each { |match| goals += match.away_team_score }
+    away_matches(team).each { |match| goals += match.home_team_score }
+    return goals
+  end
+
 
 end
 
