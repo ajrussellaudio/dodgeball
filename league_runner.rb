@@ -17,7 +17,7 @@ class LeagueRunner
   end
 
   def display_table()
-    # system "clear"
+    system "clear"
     table = Text::Table.new
     table.head = ["Team Name", "P", "W", "L", "D", "GF", "GA", "Points"]
     table.rows = []
@@ -39,7 +39,7 @@ class LeagueRunner
 
   def generate_matches()
     ids = @league.teams.map { |team| team.id }
-    ids.permutation(2).to_a
+    ids.permutation(2).to_a.shuffle
   end
 
   def play_week()
@@ -50,6 +50,17 @@ class LeagueRunner
   end
 
   def weekly_fixtures()
+    used_teams = []
+    games = []
+    @fixtures.each do |game|
+      if !used_teams.any? {|x| game.include?(x)}
+        games << game
+        @fixtures.delete(game)
+        used_teams << game.first
+        used_teams << game.last
+      end
+      break if games.count == 4
+    end
     return games
   end
 
@@ -60,10 +71,7 @@ class LeagueRunner
       "home_team_score" => rand(20),
       "away_team_score" => rand(20)
       }))
-
   end
-
-
 
 end
 
